@@ -114,8 +114,6 @@
   "com/lemonclient/api/util/misc/Timer": 52,
   "com/lemonclient/api/util/misc/Timing": 52,
   "com/lemonclient/api/util/misc/TriPredicate": 52,
-  "com/lemonclient/api/util/misc/WebsocketClientEndpoint": 52,
-  "com/lemonclient/api/util/misc/WebsocketClientEndpoint$MessageHandler": 52,
   "com/lemonclient/api/util/misc/Wrapper": 52,
   "com/lemonclient/api/util/misc/ZipUtils": 52,
   "com/lemonclient/api/util/player/BurrowUtil": 52,
