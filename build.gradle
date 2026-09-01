@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'base'
+}
+
+version = project.hasProperty('releaseVersion') ? project.releaseVersion : '1.0.0'
+group = 'com.lemonclient'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Keep only dependencies actually required by the remaining code.
+    // This is a placeholder for a real rebuild of the cleaned client.
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+
+task cleanJar(type: Jar) {
+    archiveBaseName = 'lemon-cleaned'
+    archiveVersion = project.version
+    from sourceSets.main.output
+    manifest {
+        attributes(
+            'FMLCorePlugin': 'com.lemonclient.LemonClient',
+            'Specification-Title': 'lemon-cleaned',
+            'Specification-Vendor': 'open-source cleanup',
+            'Specification-Version': project.version
+        )
+    }
+}
+
+tasks.build.dependsOn cleanJar
