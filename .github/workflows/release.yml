@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare release assets
+        run: |
+          mkdir -p release
+          if [ -f lemon-cleaned-jar ]; then
+            cp lemon-cleaned-jar release/lemon-cleaned.jar
+          fi
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/lemon-cleaned.jar
+          generate_release_notes: true
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
