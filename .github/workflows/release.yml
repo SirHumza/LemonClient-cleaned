@@ -19,10 +19,9 @@ jobs:
       - name: Prepare release assets
         run: |
           mkdir -p release
-          # Look for jar in root or release/ directory
-          for jar in lemon-cleaned.jar release/lemon-cleaned.jar *.jar; do
+          for jar in *.jar release/*.jar; do
             if [ -f "$jar" ]; then
-              cp "$jar" release/lemon-cleaned.jar
+              cp "$jar" release/
               break
             fi
           done
