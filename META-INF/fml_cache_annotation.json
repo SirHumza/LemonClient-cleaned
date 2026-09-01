@@ -8496,5 +8496,95 @@
       "java/io/Serializable",
       "java/lang/Comparable"
     ]
+  },
+  "club/minnced/discord/rpc/DiscordRPC": {
+    "name": "club/minnced/discord/rpc/DiscordRPC",
+    "interfaces": [
+      "com/sun/jna/Library"
+    ]
+  },
+  "club/minnced/discord/rpc/DiscordEventHandlers$OnReady": {
+    "name": "club/minnced/discord/rpc/DiscordEventHandlers$OnReady",
+    "interfaces": [
+      "com/sun/jna/Callback"
+    ]
+  },
+  "club/minnced/discord/rpc/DiscordEventHandlers$OnJoinRequest": {
+    "name": "club/minnced/discord/rpc/DiscordEventHandlers$OnJoinRequest",
+    "interfaces": [
+      "com/sun/jna/Callback"
+    ]
+  },
+  "club/minnced/discord/rpc/DiscordEventHandlers$OnGameUpdate": {
+    "name": "club/minnced/discord/rpc/DiscordEventHandlers$OnGameUpdate",
+    "interfaces": [
+      "com/sun/jna/Callback"
+    ]
+  },
+  "club/minnced/discord/rpc/DiscordEventHandlers$OnStatus": {
+    "name": "club/minnced/discord/rpc/DiscordEventHandlers$OnStatus",
+    "interfaces": [
+      "com/sun/jna/Callback"
+    ]
+  },
+  "com/lemonclient/client/module/modules/misc/DiscordRPCModule": {
+    "name": "com/lemonclient/client/module/modules/misc/DiscordRPCModule",
+    "annotations": [
+      {
+        "type": "CLASS",
+        "name": "Lcom/lemonclient/client/module/Module$Declaration;",
+        "target": "com/lemonclient/client/module/modules/misc/DiscordRPCModule",
+        "values": {
+          "category": {
+            "type": "ENUM",
+            "value": "Lcom/lemonclient/client/module/Category;/Misc"
+          },
+          "name": {
+            "value": "DiscordRPC"
+          }
+        }
+      },
+      {
+        "type": "FIELD",
+        "name": "Lme/zero/alpine/listener/EventHandler;",
+        "target": "listener"
+      }
+    ]
+  },
+  "me/zero/alpine/listener/Listener": {
+    "name": "me/zero/alpine/listener/Listener",
+    "interfaces": [
+      "me/zero/alpine/listener/EventHook"
+    ]
+  },
+  "me/zero/alpine/listener/EventHandler": {
+    "name": "me/zero/alpine/listener/EventHandler",
+    "interfaces": [
+      "java/lang/annotation/Annotation"
+    ]
+  },
+  "me/zero/alpine/bus/EventManager": {
+    "name": "me/zero/alpine/bus/EventManager",
+    "interfaces": [
+      "me/zero/alpine/bus/EventBus"
+    ]
+  },
+  "me/zero/alpine/bus/type/AttachableEventBus": {
+    "name": "me/zero/alpine/bus/type/AttachableEventBus",
+    "interfaces": [
+      "me/zero/alpine/bus/EventBus"
+    ]
+  },
+  "me/zero/alpine/bus/type/AttachableEventManager": {
+    "name": "me/zero/alpine/bus/type/AttachableEventManager",
+    "interfaces": [
+      "me/zero/alpine/bus/type/AttachableEventBus"
+    ]
+  },
+  "me/zero/alpine/event/type/Cancellable": {
+    "name": "me/zero/alpine/event/type/Cancellable",
+    "interfaces": [
+      "me/zero/alpine/event/type/ICancellable"
+    ]
   }
 }

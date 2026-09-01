@@ -9,8 +9,11 @@ The source files are decompiled .class files, not .java source code.
 
 - `META-INF/` -- manifest and module metadata
 - `assets/` -- client images and shader files
-- `com/lemonclient/` -- main client code
+- `com/lemonclient/` -- main client code (including DiscordRPCModule)
 - `com/lukflug/panelstudio/` -- UI library used by the client
+- `club/minnced/discord/rpc/` -- Discord Rich Presence library (safe, status display only)
+- `me/zero/alpine/` -- Event bus library (dependency of DiscordRPCModule)
+- `darwin/`, `linux-x86-64/`, `win32-x86/`, `win32-x86-64/` -- Native Discord RPC libs
 - `org/spongepowered/` -- mixin and obfuscation tooling
 - `mcmod.info` -- mod metadata
 - `mixins.lemonclient.json` -- mixin config
@@ -21,13 +24,18 @@ The source files are decompiled .class files, not .java source code.
 
 ## What was removed
 
-The original jar contained Discord webhook exfiltration, RPC integration, and related malware.
+The original jar contained Discord webhook exfiltration code that sent data to external servers.
 The following was stripped during cleaning:
 
-- `com/lemonclient/api/util/verify/*` -- Discord webhook exfiltration
-- `club/minnced/discord/webhook/*` -- Bundled Discord webhook library
-- `club/minnced/discord/rpc/*` -- Discord RPC integration
-- Native Discord RPC binaries (dylib, so, dll)
+- `com/lemonclient/api/util/verify/*` -- Discord webhook exfiltration + HWID fingerprinting
+- `club/minnced/discord/webhook/*` -- Bundled Discord webhook library (NOT the RPC lib)
+
+## What was kept (verified safe)
+
+- Discord Rich Presence (`club/minnced/discord/rpc/`) -- shows "Playing Minecraft" on your Discord profile, no data exfiltration
+- DiscordRPCModule -- toggles RPC on/off, shows player name, server, coords, dimension
+- Native Discord RPC binaries -- required by the RPC library
+- Alpine event bus -- required by DiscordRPCModule
 - `me/zero/alpine/*` -- Event bus library (dependency of removed code)
 - `shaded/websocket/*` -- WebSocket library (dependency of removed code)
 - `DiscordRPCModule` -- RPC module
@@ -50,7 +58,8 @@ All clear. See `SECURITY_AUDIT.md` and `webhooks.md` for details.
 ## FAQ
 
 ### Is this safe?
-Yes. Every file has been scanned. The malicious webhook code is gone.
+Yes. The Discord webhook code that exfiltrated data is gone. The Discord RPC that
+remains is just status display -- it shows "Playing Minecraft" on your profile, nothing more.
 
 ### Who made this?
 Some dude whose AI cleaned the malware but forgot to `git push`. Classic.
