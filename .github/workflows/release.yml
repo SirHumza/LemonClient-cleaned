@@ -19,13 +19,17 @@ jobs:
       - name: Prepare release assets
         run: |
           mkdir -p release
-          if [ -f lemon-cleaned-jar ]; then
-            cp lemon-cleaned-jar release/lemon-cleaned.jar
-          fi
+          # Look for jar in root or release/ directory
+          for jar in lemon-cleaned.jar release/lemon-cleaned.jar *.jar; do
+            if [ -f "$jar" ]; then
+              cp "$jar" release/lemon-cleaned.jar
+              break
+            fi
+          done
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: release/lemon-cleaned.jar
+          files: release/*.jar
           generate_release_notes: true
         if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'

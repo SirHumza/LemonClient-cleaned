@@ -1,6 +1,6 @@
-# lemon-cleaned
+# LemonClient-cleaned
 
-Cleaned source tree extracted from `lemon-9-fix.jar`.
+Cleaned source tree extracted from `lemon-9-fix.jar` (LemonClient v0.0.9, Minecraft 1.12.2).
 
 This repo contains the source that remains after removing the infected parts of
 the original client. It is not a feature-complete open-source client.
@@ -15,7 +15,6 @@ the original client. It is not a feature-complete open-source client.
 - `mcmod.info` — mod metadata
 - `mixins.lemonclient.json` — mixin config
 - `mixins.lemonclient.refmap.json` — mixin refmap
-- `lemon-cleaned-jar` — cleaned release jar artifact
 - `.github/workflows/release.yml` — GitHub release workflow
 - `SECURITY_AUDIT.md` — security audit notes
 - `webhooks.md` — webhook findings from the original jar
@@ -134,7 +133,6 @@ the original client. It is not a feature-complete open-source client.
 - `mcmod.info`
 - `mixins.lemonclient.json`
 - `mixins.lemonclient.refmap.json`
-- `lemon-cleaned-jar`
 
 ## Verification
 
@@ -152,14 +150,16 @@ Before shipping:
 This repo is open for external review:
 
 - The full cleaned source tree is in the repo.
-- The release jar is included as an artifact.
 - `SECURITY_AUDIT.md` lists what was removed.
 - `webhooks.md` lists the webhook findings from the original jar.
 
 If you want a second opinion, you can:
 - Search the source tree for any remaining network code.
-- Decompile the release jar and search it.
+- Rebuild the jar from source and search it.
 - Run a network-call scanner on the rebuilt jar.
+
+Note: The original `lemon-cleaned-jar` was removed because it still contained
+Discord webhook classes. Rebuild from this clean source to get a safe jar.
 
 ## Rebuilding
 
